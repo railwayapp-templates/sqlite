@@ -10,6 +10,7 @@ SQLite3 is a lightweight, serverless, open-source database engine used for local
 
 - SQLite3 database
 - SQLite Web Interface
+- `trains` table with sample data about Thomas & Friends (do you still need more features?)
 
 # 🤔 How to use
 
