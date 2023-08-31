@@ -9,7 +9,7 @@ CREATE TABLE trains (
 );
 
 -- Insert some trains
-INSERT INTO trains (name, seats) VALUES (1, 'Thomas', 10);
-INSERT INTO trains (name, seats) VALUES (2, 'Gordon', 20);
-INSERT INTO trains (name, seats) VALUES (3, 'Percy', 30);
-INSERT INTO trains (name, seats) VALUES (4, 'Henry', 40);
+INSERT INTO trains (id, name, seats) VALUES (1, 'Thomas', 10);
+INSERT INTO trains (id, name, seats) VALUES (2, 'Gordon', 20);
+INSERT INTO trains (id, name, seats) VALUES (3, 'Percy', 30);
+INSERT INTO trains (id, name, seats) VALUES (4, 'Henry', 40);
