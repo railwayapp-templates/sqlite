@@ -23,11 +23,16 @@ SQLite3 is a lightweight, serverless, open-source database engine used for local
 
 That's it! You can now manage your SQLite3.
 
-## ⚙️ `init_db.sql` Usage
+## ⚙️ `seed_db.sql` Usage
 
 After you've deployed this template, you'll find a copy of this project in your Github.  
-From there you can populate `init_db.sql` with your own SQL code.  
+From there you can populate `seed_db.sql` with your own SQL code.  
 The file will only be executed when you change anything in it and will run only once.
+
+## ⚙️ `init_db.sql` Usage
+
+This file is used to initialize the database.  
+It includes sample data for a `trains` table.
 
 # 📙 Learn more
 

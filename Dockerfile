@@ -7,6 +7,8 @@ RUN apk add --no-cache sqlite
 
 COPY entrypoint.sh .
 COPY wsgi.py .
+COPY init_db.sql .
+COPY seed_db.sql .
 
 ARG WEB_UI_PASSWORD
 ENV WEB_UI_PASSWORD=$WEB_UI_PASSWORD
