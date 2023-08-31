@@ -17,9 +17,11 @@ SQLite3 is a lightweight, serverless, open-source database engine used for local
 
 1. Open the project named "SQLite Template"
 
-2. In top you'll see a URL which you can use to access the web interface
+2. Go to the "Variables" tab and view the `SQLITE_WEB_UI_PASSWORD` variable, this is the password you'll need to access the web interface
 
-3. Click on the URL and you'll be redirected to the web interface, type your password and you'll be able to manage your database
+3. Back to `Deployments`, in the top you'll see a URL which you can use to access the web interface
+
+4. Click on the URL and you'll be redirected to the web interface, type your password and you'll be able to manage your database
 
 That's it! You can now manage your SQLite3.
 
