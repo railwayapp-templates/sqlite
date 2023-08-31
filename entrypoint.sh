@@ -9,16 +9,16 @@ if [ ! -e "$already_did_init" ]; then
 fi
 
 schema_not_changed_hash="bb78723ad3f70982ed78a0da36c2ac45399aa536"
-is_schema_already_initialized="./already_did_schema"
+seed_already_ran="/data/seed_already_ran"
 schema_hash=$(sha1sum seed_db.sql | cut -d ' ' -f 1)
 
-# We check if the schema contents has changed, and if it has, we run the seed_db.sql
-# file. We also check if the schema has already been initialized, and if it has, we
+# We check if the seed contents has changed, and if it has, we run the seed_db.sql
+# file. We also check if the seed has already been initialized, and if it has, we
 # don't run the seed_db.sql file.
-if [ ! -f "$is_schema_already_initialized" ] && [ "$schema_not_changed_hash" != "$schema_hash" ]; then
+if [ ! -f "$seed_already_ran" ] && [ "$schema_not_changed_hash" != "$schema_hash" ]; then
     echo "Running database seed"
     sqlite3 /data/database.db < seed_db.sql
-    touch "$is_schema_already_initialized"
+    touch "$seed_already_ran"
     echo "Seed complete"
 fi
 
