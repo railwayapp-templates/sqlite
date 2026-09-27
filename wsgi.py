@@ -15,7 +15,7 @@ port = os.getenv("PORT", "8080")
 password = os.getenv("SQLITE_WEB_UI_PASSWORD")
 
 def main(db_file):
-    sqlite_web.initialize_app(db_file, password=password)
+    sqlite_web.initialize_app([db_file], password=password)
 
     pool = Pool(50)
     server = WSGIServer(('0.0.0.0', int(port)), sqlite_web.app, log=None, spawn=pool)
