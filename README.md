@@ -37,6 +37,29 @@ The file will only be executed when you change anything in it and will run only 
 This file is used to initialize the database.  
 It includes sample data for a `trains` table.
 
+## Export a consistent SQLite snapshot
+
+Keep the service running while you export. Use `railway ssh` to open a shell inside the deployed service. The database in this template is `/data/database.db`. Create a snapshot in a new private directory on the mounted volume:
+
+```sh
+umask 077
+snapshot_dir=$(mktemp -d /data/sqlite-export.XXXXXX) &&
+  sqlite3 -batch -bail -readonly /data/database.db ".backup '$snapshot_dir/database.db'" &&
+  printf '%s\n' "$snapshot_dir/database.db"
+```
+
+From a private local directory outside your Git checkout, download the snapshot using the path **relative to the volume root**. For example, if the shell printed `/data/sqlite-export.AB12CD/database.db`:
+
+```sh
+umask 077
+railway volume files download /sqlite-export.AB12CD/database.db ./database.db &&
+  sqlite3 -batch -bail -readonly ./database.db 'PRAGMA integrity_check;'
+```
+
+Expect `ok` and compare a recent known record in the downloaded copy with the source. In WAL mode, simply copying the open database's main file can miss committed records even if that copy passes the integrity check. Keep the verified download somewhere private and remove the temporary export from the volume when it is no longer needed.
+
+[Railway file downloads](https://docs.railway.com/cli/volume#download-a-file-from-a-volume) · [SQLite Backup API](https://www.sqlite.org/backup.html)
+
 # 📙 Learn more
 
 - [SQLite3](https://www.sqlite.org/index.html)
